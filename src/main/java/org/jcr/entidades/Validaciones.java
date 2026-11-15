@@ -27,8 +27,6 @@ final class Validaciones {
     }
 
     static boolean sonDigitos(String texto) {
-        // tu turno: true solo si texto no es null, no está vacío
-        // y todos sus caracteres son dígitos
         if (texto == null || texto.trim().isEmpty()) {
             return false;
         }
