@@ -5,6 +5,9 @@
 package org.jcr.entidades;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import org.jcr.enums.TipoSangre;
 
 /**
@@ -16,6 +19,8 @@ public class Paciente extends Persona {
     private final HistoriaClinica historiaClinica;
     private String telefono;
     private String direccion;
+    private Hospital hospital;
+    private final List<Cita> citas = new ArrayList<>();
 
     public Paciente(String nombre, String apellido, String dni, LocalDate fechaNacimiento,
             TipoSangre tipoSangre, String telefono, String direccion) {
@@ -37,4 +42,29 @@ public class Paciente extends Persona {
         return direccion;
     }
 
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        if (this.hospital != hospital) {
+            if (this.hospital != null) {
+                this.hospital.getInternalPacientes().remove(this);
+            }
+            this.hospital = hospital;
+            if (hospital != null) {
+                hospital.getInternalPacientes().add(this);
+            }
+        }
+    }
+
+    public void addCita(Cita cita) {
+        Validaciones.noNulo(cita, "Cita no puede ser nula.");
+        citas.add(cita);
+
+    }
+
+    public List<Cita> getCitas() {
+        return Collections.unmodifiableList(citas);
+    }
 }
