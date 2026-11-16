@@ -52,4 +52,25 @@ public class Departamento {
     public List<Medico> getMedicos() {
         return Collections.unmodifiableList(medicos);
     }
+
+    public void setHospital(Hospital hospital) {
+        if (this.hospital != hospital) {
+            if (this.hospital != null) {
+                this.hospital.getInternalDepartamentos().remove(this);
+            }
+            this.hospital = hospital;
+            if (hospital != null) {
+                hospital.getInternalDepartamentos().add(this);
+            }
+        }
+    }
+
+    public void agregarMedico(Medico medico) {
+        Validaciones.noNulo(medico, "Médico no puede ser nulo.");
+        medico.setDepartamento(this);
+    }
+
+    List<Medico> getInternalMedicos() {
+        return medicos;
+    }
 }
