@@ -37,3 +37,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### IDE (no se entrega) ###
+.idea/
+nbactions.xml
