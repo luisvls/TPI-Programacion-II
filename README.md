@@ -6,7 +6,7 @@ y se verifica con el programa de pruebas provisto por la cátedra (`MainPruebas`
 
 - **Autor:** Luis Alfredo Suarez
 - **Repositorio:** https://github.com/luisvls/TPI-Programacion-II
-- **Video explicativo:** [ enlace al video]
+- **Video explicativo:** https://youtu.be/0Esc6UDpTjY
 
 ## Requisitos
 
